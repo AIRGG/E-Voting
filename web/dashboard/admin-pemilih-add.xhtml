@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <c:if test="#{empty datalogin or datalogin.getRole() != 'admin'}" >
+            <script>document.location.href = "../login.xhtml"</script>
+        </c:if>
+
+        <title>Manage Pemilih</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+        <h:outputStylesheet library="css" name="bootstrap.min.css"/>
+        <h:outputStylesheet library="css" name="mystyle.css"/>
+    </h:head>
+    <h:body>
+        <c:if test="#{not empty datalogin and datalogin.getRole() eq 'admin'}" >
+            <ui:include src="inc/navbar.xhtml" />
+            <b:container>
+                <b:row style="margin-top: 50px;">
+                    <b:column col-md="12">
+                        <h1>Pemilih Add</h1>
+                        <hr/>
+                        <div class="row table-responsive">
+                            <b:alert rendered="#{tblPemilih.error}" severity="warning"><strong>Warning!</strong> #{tblPemilih.errorMsg}</b:alert>
+                            <b:form inline="true">
+                                <h:panelGrid columns="1" cellpadding="5">
+                                    <b:inputText label="Userid" labelStyle="width:80px;" value="#{tblPemilih.userid}" required="true" required-message="Password cannot Blank.!" /><br/>
+                                    #{tblPemilih.setPasswd(tblPemilih.getPassRand())}
+                                    <b:inputText label="Passwd" labelStyle="width:80px;" value="#{tblPemilih.passwd}" required="true" required-message="Password cannot Blank.!" /><br/>
+                                    <b:inputText label="Nama" labelStyle="width:80px;" value="#{tblPemilih.nama}" required="true" required-message="Password cannot Blank.!" /><br/><br/>
+                                </h:panelGrid>
+                                <b:commandButton action="#{tblPemilih.addData()}" value="Save" look="success" />
+                                &nbsp;
+                                <b:button outcome="admin-pemilih.xhtml" value="Back" />
+                            </b:form>
+                        </div>
+                    </b:column>
+                </b:row>
+            </b:container>
+        </c:if>
+    </h:body>
+</html>
+

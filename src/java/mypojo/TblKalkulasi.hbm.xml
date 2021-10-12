@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 28, 2021 9:20:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mypojo.TblKalkulasi" table="tbl_kalkulasi" catalog="db_evoting" optimistic-lock="version">
+        <id name="idkalkulasi" type="int">
+            <column name="idkalkulasi" />
+            <generator class="assigned" />
+        </id>
+        <property name="docalculate" type="string">
+            <column name="docalculate" length="1" not-null="true" />
+        </property>
+        <property name="datecalculate" type="timestamp">
+            <column name="datecalculate" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

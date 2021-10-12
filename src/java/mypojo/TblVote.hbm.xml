@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Sep 28, 2021 9:20:22 PM by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="mypojo.TblVote" table="tbl_vote" catalog="db_evoting" optimistic-lock="version">
+        <id name="idvote" type="int">
+            <column name="idvote" />
+            <generator class="assigned" />
+        </id>
+        <property name="kdvote" type="string">
+            <column name="kdvote" length="5" not-null="true" />
+        </property>
+        <property name="unqiduser" type="string">
+            <column name="unqiduser" length="32" not-null="true" />
+        </property>
+        <property name="tgljam" type="timestamp">
+            <column name="tgljam" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
